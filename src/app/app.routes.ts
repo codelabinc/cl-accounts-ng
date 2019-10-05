@@ -31,9 +31,15 @@ export const rootRouterConfig: Routes = [
         path: 'dashboard', 
         loadChildren: () => import('./views/others/others.module').then(m => m.OthersModule), 
         data: { title: 'Dashboard Blank', breadcrumb: 'DASHBOARD'}
+      },
+      {
+        path: 'apps', 
+        loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule), 
+        data: { title: 'Apps', breadcrumb: 'Apps'}
       }
     ]
   },
+
   { 
     path: '**', 
     redirectTo: 'sessions/404'
