@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppsListComponent } from './apps-list/apps-list.component';
+import { AppsListComponent } from './components/apps-list/apps-list.component';
 import { RouterModule } from '@angular/router';
-import { OthersRoutes } from './apps.routing';
+import { routes } from './apps.routing';
 import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -46,7 +46,7 @@ import { CommonPipesModule } from 'app/pipes/common/common-pipes.module';
     ChartsModule,
     FileUploadModule,
     CommonPipesModule,
-    RouterModule.forChild(OthersRoutes)
+    RouterModule.forChild(routes)
 
 
   ]

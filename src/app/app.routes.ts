@@ -1,3 +1,4 @@
+import { AccountListComponent } from './accounts/components/account-list/account-list.component';
 import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './components/common/layouts/admin-layout/admin-layout.component';
@@ -36,6 +37,11 @@ export const rootRouterConfig: Routes = [
         path: 'apps', 
         loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule), 
         data: { title: 'Apps', breadcrumb: 'Apps'}
+      },
+      {
+        path: 'accounts', 
+        loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule), 
+        data: { title: 'Accounts', breadcrumb: 'Accounts'}
       }
     ]
   },
