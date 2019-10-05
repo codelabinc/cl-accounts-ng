@@ -34,3 +34,12 @@
 
   <ng-template #loader>loading...</ng-template>
    -->
+
+   <div *ngIf="apps$ | async as apps; else loader">
+    {{apps | json}}
+
+  </div>
+
+  <ng-template #loader>loading...</ng-template>
+
+   
