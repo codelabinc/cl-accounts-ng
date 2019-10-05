@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
+import { Page } from 'app/model/page/page';
 ​
 export class BaseService<T> {
 ​
@@ -18,8 +19,8 @@ export class BaseService<T> {
     return this.http.patch(`${environment.apiBaseUrl}/${this._serviceName}`, data);
   }
 ​
-  search<T, R>(filter: any) {
-    return this.http.get<R>(`${environment.apiBaseUrl}/${this._serviceName}`, {
+  search<R>(filter: any) {
+    return this.http.get<Page<R>>(`${environment.apiBaseUrl}/${this._serviceName}`, {
       params: filter
     });
   }
