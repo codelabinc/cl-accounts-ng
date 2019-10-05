@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppsListComponent } from './apps-list/apps-list.component';
+import { AppsListComponent } from './components/apps-list/apps-list.component';
 import { RouterModule } from '@angular/router';
-import { OthersRoutes } from './apps.routing';
+import { routes } from './apps.routing';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts';

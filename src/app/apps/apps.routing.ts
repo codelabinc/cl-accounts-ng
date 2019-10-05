@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { AppsListComponent } from './apps-list/apps-list.component'
+import { AppsListComponent } from './components/apps-list/apps-list.component'
 
-export const OthersRoutes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: AppsListComponent
