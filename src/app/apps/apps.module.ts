@@ -23,7 +23,7 @@ import { MaterialModule } from 'app/material.module';
     FileUploadModule,
     CommonPipesModule,
     MaterialModule,
-    RouterModule.forChild(OthersRoutes)
+    RouterModule.forChild(routes)
 
 
   ]
