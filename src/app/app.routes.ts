@@ -42,6 +42,11 @@ export const rootRouterConfig: Routes = [
         path: 'accounts', 
         loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule), 
         data: { title: 'Accounts', breadcrumb: 'Accounts'}
+      },
+      {
+        path: 'users', 
+        loadChildren: () => import('./users/users.module').then(m => m.UsersModule), 
+        data: { title: 'Users', breadcrumb: 'Users'}
       }
     ]
   },
