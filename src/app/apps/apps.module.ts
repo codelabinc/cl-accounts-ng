@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppsListComponent } from './components/apps-list/apps-list.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './apps.routing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -18,6 +18,7 @@ import { MaterialModule } from 'app/material.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     ChartsModule,
     FileUploadModule,

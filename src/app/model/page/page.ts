@@ -1,5 +1,5 @@
 export interface Page<T> {
-    content: Content<T>[];
+    content: T[];
     pageable: Pageable;
     totalPages: number;
     totalElements: number;
@@ -25,7 +25,4 @@ export interface Pageable {
     sorted: boolean;
     unsorted: boolean;
     empty: boolean;
-  }
-  
-  export interface Content<T> {
   }
