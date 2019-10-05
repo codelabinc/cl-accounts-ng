@@ -45,7 +45,7 @@ export class NavigationService {
       name: 'USERS',
       type: 'link',
       tooltip: 'Users',
-      icon: 'supervised_user_circle',
+      icon: 'supervisor_account',
       state: 'users'
     },
   ]
