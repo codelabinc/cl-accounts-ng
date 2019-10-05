@@ -2,6 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MaterialModule } from 'app/material.module';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { environment } from 'environments/environment.prod';
+import { AppService } from 'app/apps/services/app.service';
+import { filter } from 'rxjs/operators';
+import { App } from 'app/model/app';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 
 export interface TestTable {
@@ -44,14 +50,22 @@ const ELEMENT_DATA: TestTable[] = [
 })
 export class AppsListComponent implements OnInit {
  
+  working: boolean;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor( MaterialModule: MaterialModule ) { }
+  constructor( MaterialModule: MaterialModule, private appService: AppService ) { }
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<TestTable>(ELEMENT_DATA);
 
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  ngOnInit() { 
 
-}
+    this.appService.search(filter).subscribe(
+      (res: App) => {
+        this.working = true;
+      },
+      (error: HttpErrorResponse) => {
+        this.working = false;
+      });
+
+    }
+  }
