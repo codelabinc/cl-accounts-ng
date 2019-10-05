@@ -9,7 +9,8 @@ import { AppComponent } from './app.component';
 import { RoutePartsService } from './services/route-parts/route-parts.service';
 import { NavigationService } from "./services/navigation/navigation.service";
 import { AuthService } from './services/auth/auth.service';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientInterceptor } from './interceptors/http-client-interceptor';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     RoutePartsService, 
     NavigationService, 
     AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
