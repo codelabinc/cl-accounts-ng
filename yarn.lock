@@ -1003,6 +1003,13 @@
     semver "6.3.0"
     semver-intersect "1.4.0"
 
+"@swimlane/ngx-datatable@^16.0.2":
+  version "16.0.2"
+  resolved "https://registry.yarnpkg.com/@swimlane/ngx-datatable/-/ngx-datatable-16.0.2.tgz#4cbee063f1e992b4ba5b0ab6a5485ea7e93e4b25"
+  integrity sha512-+JxVumYGr4wON2YC0dXYt0vWmWNaWcVFWdAfrb6gXL/6iAJco70rX59lFvQ6ubFVgDKCsf+QycBXODvLnHaGUQ==
+  dependencies:
+    tslib "^1.9.0"
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"

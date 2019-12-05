@@ -1,0 +1,110 @@
+<!-- Dashboard card row -->
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
+    <mat-card>
+      <mat-card-title fxLayoutAlign="start center">
+        <small class="text-muted">Accounts</small>
+        <span fxFlex></span>
+        <mat-chip class="icon-chip" color="primary" selected="true">
+          <mat-icon>trending_up</mat-icon>20%
+        </mat-chip>
+      </mat-card-title>
+      <mat-card-content>
+        <h3 class="m-0 font-normal">22,450</h3>
+        <small class="text-muted">Since beginning</small>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
+    <mat-card>
+      <mat-card-title>
+        <small class="text-muted">Successful Logins</small>
+        <span fxFlex></span>
+        <mat-chip class="icon-chip" color="accent" selected="true">
+          <mat-icon>trending_up</mat-icon>10%
+        </mat-chip>
+      </mat-card-title>
+      <mat-card-content>
+        <h3 class="m-0 font-normal">377,670</h3>
+        <small class="text-muted">Today</small>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
+    <mat-card>
+      <mat-card-title>
+        <small class="text-muted">Traffic</small>
+        <span fxFlex></span>
+        <mat-chip class="icon-chip" color="accent" selected="true">
+          <mat-icon>trending_up</mat-icon>9%
+        </mat-chip>
+      </mat-card-title>
+      <mat-card-content>
+        <h3 class="m-0 font-normal">54,845</h3>
+        <small class="text-muted">Hits Today</small>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
+    <mat-card>
+      <mat-card-title>
+        <small class="text-muted">Users</small>
+        <span fxFlex></span>
+        <mat-chip class="icon-chip" color="warn" selected="true">
+          <mat-icon>trending_down</mat-icon>2%
+        </mat-chip>
+      </mat-card-title>
+      <mat-card-content>
+        <h3 class="m-0 font-normal">245</h3>
+        <small class="text-muted">Since beginning</small>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- Fullwidth chart -->
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex="100">
+    <mat-card class="default">
+      <mat-card-title class="">
+        <span>Uptime</span>
+        <span fxFlex></span>
+      </mat-card-title>
+      <mat-card-subtitle>UpTime vs DownTime</mat-card-subtitle>
+      <mat-card-content class="p-0" [style.height]="'240px'">
+        <canvas height="240" baseChart class="chart m-0" [datasets]="lineChartSteppedData" [labels]="lineChartLabels"
+          [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex="100" fxFlex.gt-sm="100" fxLayout="column" fxLayoutWrap="wrap">
+    <mat-card class="default">
+      <mat-card-title>Recent Errors</mat-card-title>
+      <mat-card-content class="p-0">
+        <mat-list class="compact-list mb-1">
+          <mat-list-item class="" *ngFor="let t of tickets">
+            <div fxLayout="row" fxFlex="100">
+              <h6 class="m-0 mr-1">{{t.layer}}</h6>
+              <h6 class="m-0 mr-1">{{t.path}}</h6>
+              <span fxFlex></span>
+              <div fxFlex="40">{{t.message | excerpt:100 }}</div>
+              <span fxFlex></span>
+              <small class="text-muted mr-1">{{ t.date | relativeTime}}</small>
+            </div>
+            <mat-chip mat-sm-chip [color]="'warn'" [selected]="t.isOpen">{{t.isOpen ? 'open' : 'fixed'}}</mat-chip>
+          </mat-list-item>
+        </mat-list>
+        <div class="text-center">
+          <button mat-button class="full-width">View all</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
