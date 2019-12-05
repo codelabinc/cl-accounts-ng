@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 
 import { RoutePartsService } from './services/route-parts/route-parts.service';
 import { NavigationService } from "./services/navigation/navigation.service";
-import { AuthService } from './services/auth/auth.service';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientInterceptor } from './interceptors/http-client-interceptor';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
+import { GlobalErrorHandler } from './services/global-error-handler';
+import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
 
 
 const modules = [
@@ -33,8 +34,9 @@ const modules = [
   providers: [
     RoutePartsService, 
     NavigationService, 
-    AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true }
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

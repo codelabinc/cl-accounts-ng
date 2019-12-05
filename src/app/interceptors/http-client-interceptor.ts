@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
 
 @Injectable()
-export class HttpClientInterceptor implements HttpInterceptor  {
+export class HttpClientInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        req = req.clone({ headers: req.headers.set('X-APP-CODE', environment.xAppCode) });
+        let cl_token = JSON.parse(localStorage.getItem('cl_token'));
+        console.log('===>token from local storate', cl_token);
+        if (cl_token) {
+            req = req.clone({ headers: req.headers.set('Authorization', `Bearer ${cl_token}`) });
+        }
         return next.handle(req);
     }
 }

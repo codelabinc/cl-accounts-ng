@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: '/v1',
-  xAppCode: "CL-001"
+  apiBaseUrl: '/api',
+  xAccountCode: "CL00001"
 };

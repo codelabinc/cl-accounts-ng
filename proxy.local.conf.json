@@ -1,12 +1,12 @@
 [
     {
         "context": [
-            "/v1"
+            "/api"
         ],
         "pathRewrite": {
-            "^/v1": ""
+            "^/api": ""
         },
-        "target": "http://localhost:9090",
+        "target": "http://localhost:8080",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true

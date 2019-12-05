@@ -3,8 +3,9 @@ import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './components/common/layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './components/common/layouts/auth-layout/auth-layout.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AlreadyLoggedInGuard } from './guards/already-logged-in.guard';
 
-import { AuthService } from './services/auth/auth.service';
 
 export const rootRouterConfig: Routes = [
   { 
@@ -15,6 +16,7 @@ export const rootRouterConfig: Routes = [
   {
     path: '', 
     component: AuthLayoutComponent,
+    canActivate: [AlreadyLoggedInGuard],
     children: [
       { 
         path: 'sessions', 
@@ -26,7 +28,7 @@ export const rootRouterConfig: Routes = [
   {
     path: '', 
     component: AdminLayoutComponent,
-    canActivate: [AuthService],
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard', 
