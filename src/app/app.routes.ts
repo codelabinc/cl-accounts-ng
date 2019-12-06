@@ -1,4 +1,3 @@
-import { AccountListComponent } from './accounts/components/account-list/account-list.component';
 import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './components/common/layouts/admin-layout/admin-layout.component';
@@ -35,21 +34,20 @@ export const rootRouterConfig: Routes = [
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule), 
         data: { title: 'Dashboard', breadcrumb: 'DASHBOARD'}
       },
-      {
-        path: 'apps', 
-        loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule), 
-        data: { title: 'Apps', breadcrumb: 'Apps'}
-      },
+    
+    ]
+  },
+  {
+    path: '', 
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
       {
         path: 'accounts', 
-        loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule), 
-        data: { title: 'Accounts', breadcrumb: 'Accounts'}
+        loadChildren: () => import('./views/accounts/accounts.module').then(m => m.AccountsModule), 
+        data: { title: 'Accounts', breadcrumb: 'ACCOUNTS'}
       },
-      {
-        path: 'users', 
-        loadChildren: () => import('./users/users.module').then(m => m.UsersModule), 
-        data: { title: 'Users', breadcrumb: 'Users'}
-      }
+    
     ]
   },
 

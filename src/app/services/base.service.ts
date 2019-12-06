@@ -20,7 +20,7 @@ export class BaseService<T> {
   }
 ​
   search<R>(filter: any) {
-    return this.http.get<Page<R>>(`${environment.apiBaseUrl}/${this._serviceName}`, {
+    return this.http.get<Page<T>>(`${environment.apiBaseUrl}/${this._serviceName}`, {
       params: filter
     });
   }
