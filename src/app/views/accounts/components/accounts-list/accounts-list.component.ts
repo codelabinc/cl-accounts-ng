@@ -1,12 +1,9 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { merge, of, Observable, fromEvent } from 'rxjs';
-import { startWith, switchMap, map, catchError, delayWhen, debounceTime, tap, distinctUntilChanged } from 'rxjs/operators';
+import { merge } from 'rxjs';
+import { debounceTime, tap, distinctUntilChanged } from 'rxjs/operators';
 import { AccountsService } from '../../services/accounts.service';
-import { Account } from '../../model/account';
-import { Page } from '../../../../model/page/page';
 import { AccountDataSource } from '../../datasource/account-data-source';
-import { DataSource } from '@angular/cdk/table';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -16,7 +13,7 @@ import { FormControl } from '@angular/forms';
 })
 export class AccountsListComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['name', 'code', 'type', 'status', 'dateCreated'];
+  displayedColumns: string[] = ['status', 'name', 'code', 'type', 'dateCreated', 'action'];
 
   @ViewChild(MatPaginator, { static: false }) paginator !: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort !: MatSort;

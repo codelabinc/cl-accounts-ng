@@ -15,7 +15,8 @@ import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-layout',
-  templateUrl: './admin-layout.template.html'
+  templateUrl: './admin-layout.template.html',
+  styleUrls: ['./admin-layout.template.css']
 })
 export class AdminLayoutComponent implements OnInit {
   private isMobile;

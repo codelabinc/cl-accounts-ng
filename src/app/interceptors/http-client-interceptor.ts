@@ -10,6 +10,7 @@ export class HttpClientInterceptor implements HttpInterceptor {
         if (cl_token) {
             req = req.clone({ headers: req.headers.set('Authorization', `Bearer ${cl_token}`) });
         }
+
         return next.handle(req);
     }
 }

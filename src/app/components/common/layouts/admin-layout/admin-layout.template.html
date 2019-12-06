@@ -6,16 +6,17 @@
       <div class="branding default-bg">
         <!-- <img src="assets/images/logo.png" alt="" class="app-logo"> -->
         <!-- Two different logos for dark and light themes -->
-        <h2 class="app-logo-text" *ngIf="themeService.activatedThemeName.indexOf('dark') !== -1" style="color: rgb(255, 255, 255)">CODELAB</h2>
+        <h2 class="app-logo-text" *ngIf="themeService.activatedThemeName.indexOf('dark') !== -1"
+          style="color: rgb(255, 255, 255)">CODELAB</h2>
         <h2 class="app-logo-text" *ngIf="themeService.activatedThemeName.indexOf('dark') === -1">CODELAB</h2>
       </div>
 
-     
+
       <!-- Navigation -->
       <navigation></navigation>
-      
+
     </div>
-   
+
   </mat-sidenav>
 
   <!-- Top Bar -->
@@ -25,14 +26,16 @@
   <app-breadcrumb #breadcrumb></app-breadcrumb>
 
   <!-- App content -->
-  <div class="rightside-content-hold">
+  <div class="rightside-content-hold bg-shade">
     <div class="view-loader" *ngIf="isModuleLoading">
       <div class="spinner">
         <div class="double-bounce1 mat-bg-accent"></div>
         <div class="double-bounce2 mat-bg-primary"></div>
       </div>
     </div>
-    <router-outlet></router-outlet>
+    <div class="m-50">
+      <router-outlet></router-outlet>
+    </div>
   </div>
   <!-- Notificaation bar -->
   <mat-sidenav #notificationPanel mode="over" class="" position="end">

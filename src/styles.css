@@ -1,11 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
-.error {
-    background-color: red;
-    color: white;    
+
+.ml-5 {
+    margin-left: 5px;
+  }
+  .mr-5 {
+    margin-right: 5px;
+  }
+  
+  .ml-10 {
+    margin-left: 10px;
+  }
+  .mr-10 {
+    margin-right: 10px;
+  }
+  .header-desc {
+      color: gray;
+  }
+
+  .plr-10 {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.error button {
-    background-color:orangered;
-    color: white;
+.plr-30 {
+  padding-left: 30px;
+  padding-right: 30px;
 }
-

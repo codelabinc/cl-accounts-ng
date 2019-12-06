@@ -14,6 +14,8 @@ export class AccountDataSource implements DataSource<Account> {
 
     public loading$ = this.loadingSubject.asObservable();
 
+    totalElements = 0;
+
     constructor(private accountsService: AccountsService) { }
 
 
@@ -24,6 +26,7 @@ export class AccountDataSource implements DataSource<Account> {
         this.accountsService.search(filter).pipe(
             map((data: Page<Account>) => {
                 console.log(data);
+                this.totalElements = data.totalElements;
                 return data.content;
             }),
             // catchError(() => of([])),
@@ -35,6 +38,7 @@ export class AccountDataSource implements DataSource<Account> {
                 this.accountsSubject.next(accounts)
             });
     }
+
 
     connect(collectionViewer: CollectionViewer): Observable<Account[]> {
         console.log("Connecting data source");
