@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
 
+  private TOKEN_KEY = 'cl_token';
+
   constructor(private httpClient: HttpClient,
     private router: Router) { }
 
@@ -20,6 +22,14 @@ export class AuthenticationService {
 
   refreshToken(): Observable<LoginResponse> {
     return this.httpClient.get<LoginResponse>(`${environment.apiBaseUrl}/auth/refresh-token`);
+  }
+
+  saveToken(token: string) {
+    localStorage.setItem(this.TOKEN_KEY, token);
+  }
+
+  getToken(): string {
+    return localStorage.getItem(this.TOKEN_KEY);
   }
 
   logout() {

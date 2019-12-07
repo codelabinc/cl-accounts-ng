@@ -9,10 +9,9 @@ import { AppComponent } from './app.component';
 import { RoutePartsService } from './services/route-parts/route-parts.service';
 import { NavigationService } from "./services/navigation/navigation.service";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientInterceptor } from './interceptors/http-client-interceptor';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 import { GlobalErrorHandler } from './services/global-error-handler';
-import { ServerErrorInterceptor } from './interceptors/server-error-interceptor';
+import { TokenInterceptor } from './interceptors/token-interceptor';
 
 
 const modules = [
@@ -35,8 +34,7 @@ const modules = [
     RoutePartsService, 
     NavigationService, 
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
