@@ -9,10 +9,7 @@
   .filter {
     display: block;
   }
-.panel-area {
-  background-color: white;
-  border-radius: 5px;
-}
+
 
 .mat-icon green {
   color: green;

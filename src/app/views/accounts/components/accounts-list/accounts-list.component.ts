@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { merge } from 'rxjs';
+import { merge, Observable } from 'rxjs';
 import { debounceTime, tap, distinctUntilChanged } from 'rxjs/operators';
 import { AccountsService } from '../../services/accounts.service';
 import { AccountDataSource } from '../../datasource/account-data-source';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MasterRecordService } from '../../../../services/master-record.service';
+import { Country, State } from 'app/model/master-records';
 
 @Component({
   selector: 'app-accounts-list',
@@ -19,11 +21,6 @@ export class AccountsListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, { static: false }) sort !: MatSort;
   nameFilter = new FormControl('');
   codeFilter = new FormControl('');
-
-  filterValues = {
-    name: '',
-    code: ''
-  };
 
   dataSource: AccountDataSource;
 

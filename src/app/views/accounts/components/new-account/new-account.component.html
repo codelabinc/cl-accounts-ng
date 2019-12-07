@@ -1,0 +1,24 @@
+<div class="panel-area" fxFlex.gt-md="60" fxFlex.lt-md="100">
+    <div fxLayout="column wrap" fxLayoutGap="30px">
+        <div fxFlex="calc(20%-30px)">
+            <div fxLayout="row wrap" class="plr-30" fxLayoutAlign="start center">
+                <div>
+                    <h1>New Account</h1>
+                    <p class="header-desc">Create a New Account and a default User to manager it</p>
+                </div>
+                <span fxFlex="1 1 auto"></span>
+                <button mat-raised-button color="accent" [routerLink]="['..']">
+                    <mat-icon class="mat-18">arrow_back</mat-icon>
+                    Back to Accounts
+                </button>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+
+        <div fxFlex="calc(80%-30px)">
+            <div class="plr-30">
+               <app-account-form [working]="working" (submitFired)="onSubmit($event)"></app-account-form>
+            </div>
+        </div>
+    </div>
+</div>

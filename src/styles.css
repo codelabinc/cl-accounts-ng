@@ -26,3 +26,11 @@
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.panel-area {
+  background-color: white;
+  border-radius: 5px;
+}
+.mb-5 {
+  margin-bottom: 5px;
+}

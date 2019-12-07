@@ -6,12 +6,15 @@ import { AccountsListComponent } from './components/accounts-list/accounts-list.
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule, MatSortModule, MatInputModule, MatButtonModule, MatIconModule, MatDividerModule, MatMenuModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NewAccountComponent } from './components/new-account/new-account.component';
+import { AccountFormComponent } from './components/account-form/account-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
-  declarations: [AccountsListComponent],
+  declarations: [AccountsListComponent, NewAccountComponent, AccountFormComponent],
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
@@ -25,6 +28,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     MatDividerModule,
     ReactiveFormsModule,
+    MatSelectModule,
+    FormsModule,
     MatMenuModule
   ]
 })

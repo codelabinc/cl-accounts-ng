@@ -1,0 +1,131 @@
+<div fxLayout="column wrap" fxLayoutAlign="center center">
+    <mat-spinner *ngIf="working"></mat-spinner>
+</div>
+<form fxFlex.gt-md="100" fxFlex.lt-md="100" fxLayout="column wrap" fxLayoutGap="30px" [formGroup]="doForm"
+    (ngSubmit)="onSubmit()">
+    <div>
+        <label>Account Information</label>
+        <mat-divider></mat-divider>
+    </div>
+    <div fxLayout.lt-md="column wrap" fxLayout.gt-md="row wrap" fxLayoutGap.gt-md="20px" fxLayoutGap.lt-md="20px">
+        <mat-form-field fxFlex.gt-md="calc(50%-20px)">
+            <input matInput placeholder="Name" formControlName="name">
+            <mat-hint>* Required</mat-hint>
+            <mat-error></mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex.gt-md="calc(50%-20px)">
+            <mat-select formControlName="accountType" placeholder="Account Type">
+                <mat-option *ngFor="let item of accountTypes$ | async as accountTypes;" [value]="item.value">
+                    {{item.name}}</mat-option>
+            </mat-select>
+            <mat-hint>* Required</mat-hint>
+            <mat-error></mat-error>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row wrap" *ngIf="false">
+        <mat-form-field fxFlex="100">
+            <textarea matInput placeholder="Description"></textarea>
+            <mat-hint>* Required</mat-hint>
+            <mat-error></mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <label>Address Information</label>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div formGroupName="address">
+        <div fxLayout.lt-md="column wrap" fxLayout.gt-md="row wrap" fxLayoutGap.gt-md="20px">
+            <mat-form-field fxFlex.gt-md="calc(33.3%-20px)">
+                <mat-select formControlName="countryCode" placeholder="Country">
+                    <mat-option *ngFor="let item of countries$ | async as countries;" [value]="item.value">
+                        {{item.name}}</mat-option>
+                </mat-select>
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex.gt-md="calc(33.3%-20px)">
+                <mat-select formControlName="stateCode" placeholder="State">
+                    <mat-option *ngFor="let item of states$ | async as states;" [value]="item.value">
+                        {{item.name}}</mat-option>
+                </mat-select>
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex.gt-md="calc(33.3%-20px)">
+                <input matInput placeholder="House Number" formControlName="houseNumber">
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+
+        </div>
+    </div>
+
+    <div formGroupName="address">
+        <div fxLayout.lt-md="column wrap" fxLayout.gt-md="row wrap" fxLayoutGap.gt-md="20px">
+            <mat-form-field fxFlex.gt-md="calc(100%-20px)">
+                <textarea matInput placeholder="Street Address" formControlName="streetAddress"></textarea>
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+
+        </div>
+    </div>
+
+    <div>
+        <label>Admin User Information</label>
+        <mat-divider></mat-divider>
+    </div>
+    <div formGroupName="adminUser">
+        <div fxLayout.lt-md="column wrap" fxLayout.gt-md="row wrap" fxLayoutGap.gt-md="20px">
+            <mat-form-field fxFlex.gt-md="calc(50%-20px)">
+                <input matInput placeholder="Last Name" formControlName="lastName">
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex.gt-md="calc(50%-20px)">
+                <input matInput placeholder="First Name" formControlName="firstName">
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div formGroupName="adminUser">
+        <div fxLayout.lt-md="column wrap" fxLayout.gt-md="row wrap" fxLayoutGap.gt-md="20px">
+            <mat-form-field fxFlex="calc(50%-20px)">
+                <input matInput placeholder="Email" formControlName="email">
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(50%-20px)">
+                <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div formGroupName="adminUser">
+        <div fxLayout.lt-md="column wrap" fxLayout.gt-md="row wrap" fxLayoutGap.gt-md="20px">
+            <mat-form-field fxFlex="calc(50%-20px)">
+                <input matInput placeholder="Username" formControlName="username">
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(50%-20px)">
+                <input matInput placeholder="Password" type="password" formControlName="password">
+                <mat-hint>* Required</mat-hint>
+                <mat-error></mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div fxLayout="row wrap" fxLayoutAlign="end stretch" fxLayoutGap="20px">
+        <button mat-raised-button color="primary" type="submit" [disabled]="working">Save</button>
+        <button mat-raised-button color="warn" (click)="onClick">Cancel</button>
+    </div>
+
+</form>
