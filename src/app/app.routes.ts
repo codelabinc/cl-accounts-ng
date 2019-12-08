@@ -50,6 +50,19 @@ export const rootRouterConfig: Routes = [
     
     ]
   },
+  {
+    path: '', 
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'users', 
+        loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule), 
+        data: { title: 'Users', breadcrumb: 'USERS'}
+      },
+    
+    ]
+  },
 
   { 
     path: '**', 
