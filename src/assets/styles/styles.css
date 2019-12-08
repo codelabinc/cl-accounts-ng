@@ -466,7 +466,7 @@ code {
     top: 25px;
     right: -2px;
     border: 2px solid #ffffff;
-    background: #ccc;
+    /* background: #ccc; */
 }
 .full-width {
     width: 100% !important;

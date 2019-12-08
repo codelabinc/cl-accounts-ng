@@ -32,7 +32,8 @@
               "src/assets/styles/themes/egret-indigo.scss",
               "src/assets/styles/themes/egret-blue.scss",
               "src/assets/styles/themes/egret-dark-pink.scss",
-              "src/assets/styles/styles.css"
+              "src/assets/styles/styles.css",
+              "src/styles.css"
             ],
             "scripts": [
               "src/vendor/pace/pace.min.js",

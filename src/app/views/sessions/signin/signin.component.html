@@ -4,7 +4,8 @@
     <mat-card>
       <mat-card-content>
         <div class="text-center pb-1">
-          <img src="assets/images/logo-full.png" alt="" class="mb-05">
+          <!-- <img src="assets/images/logo-full.png" alt="" class="mb-05"> -->
+          <h3 class="mb-05">Manage Users, Accounts</h3>
           <p class="text-muted m-0">Sign in to your account</p>
         </div>
         <form [formGroup]="signinForm" (ngSubmit)="signin()">
@@ -12,14 +13,14 @@
             <mat-form-field class="full-width">
               <input
                 matInput
-                name="username"
-                [formControl]="signinForm.controls['username']"
-                placeholder="Username"
+                name="identifier"
+                [formControl]="signinForm.controls['identifier']"
+                placeholder="Username or Email"
                 value="">
             </mat-form-field>
             <small 
-              *ngIf="signinForm.controls['username'].hasError('required') && signinForm.controls['username'].touched" 
-              class="form-error-msg"> Username is required </small>
+              *ngIf="signinForm.controls['identifier'].hasError('required') && signinForm.controls['identifier'].touched" 
+              class="form-error-msg"> Username or Email is required </small>
           </div>
 
           <div class="">

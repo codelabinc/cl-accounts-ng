@@ -26,7 +26,28 @@ export class NavigationService {
       tooltip: 'Dashboard',
       icon: 'dashboard',
       state: 'dashboard'
-    }
+    },
+    {
+      name: 'APPS',
+      type: 'link',
+      tooltip: 'Apps',
+      icon: 'apps',
+      state: 'apps'
+    },
+    {
+      name: 'ACCOUNTS',
+      type: 'link',
+      tooltip: 'Accounts',
+      icon: 'account_box',
+      state: 'accounts'
+    },
+    {
+      name: 'USERS',
+      type: 'link',
+      tooltip: 'Users',
+      icon: 'supervisor_account',
+      state: 'users'
+    },
   ]
 
   

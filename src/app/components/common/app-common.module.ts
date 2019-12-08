@@ -27,6 +27,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { CommonDirectivesModule } from '../../directives/common/common-directives.module';
 import { ThemeService } from '../../services/theme/theme.service';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AppConfirmModule } from '../../services/app-confirm/app-confirm.module';
 
 @NgModule({
   imports: [
@@ -46,11 +48,13 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MatGridListModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
     MatRadioModule,
     MatCheckboxModule,
     MatCardModule,
     MatProgressSpinnerModule,
     CommonDirectivesModule,
+    AppConfirmModule
   ],
   declarations: [
     AdminLayoutComponent,
@@ -61,6 +65,6 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     BreadcrumbComponent
   ],
   providers: [ThemeService],
-  exports: []
+  exports: [],
 })
 export class AppCommonModule {}

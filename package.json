@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "local": "ng serve --proxy-config proxy.local.conf.json --port 4000",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -24,6 +25,9 @@
     "@angular/platform-browser": "8.2.6",
     "@angular/platform-browser-dynamic": "8.2.6",
     "@angular/router": "8.2.6",
+    "@auth0/angular-jwt": "^3.0.1",
+    "@material/button": "^3.2.0",
+    "@swimlane/ngx-datatable": "^16.0.2",
     "angular-calendar": "0.21.3",
     "chart.js": "2.5.0",
     "classlist.js": "1.1.20150312",

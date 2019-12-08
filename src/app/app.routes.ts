@@ -2,8 +2,9 @@ import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './components/common/layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './components/common/layouts/auth-layout/auth-layout.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AlreadyLoggedInGuard } from './guards/already-logged-in.guard';
 
-import { AuthService } from './services/auth/auth.service';
 
 export const rootRouterConfig: Routes = [
   { 
@@ -14,6 +15,7 @@ export const rootRouterConfig: Routes = [
   {
     path: '', 
     component: AuthLayoutComponent,
+    canActivate: [AlreadyLoggedInGuard],
     children: [
       { 
         path: 'sessions', 
@@ -25,15 +27,30 @@ export const rootRouterConfig: Routes = [
   {
     path: '', 
     component: AdminLayoutComponent,
-    canActivate: [AuthService],
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard', 
-        loadChildren: () => import('./views/others/others.module').then(m => m.OthersModule), 
-        data: { title: 'Dashboard Blank', breadcrumb: 'DASHBOARD'}
-      }
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule), 
+        data: { title: 'Dashboard', breadcrumb: 'DASHBOARD'}
+      },
+    
     ]
   },
+  {
+    path: '', 
+    component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'accounts', 
+        loadChildren: () => import('./views/accounts/accounts.module').then(m => m.AccountsModule), 
+        data: { title: 'Accounts', breadcrumb: 'ACCOUNTS'}
+      },
+    
+    ]
+  },
+
   { 
     path: '**', 
     redirectTo: 'sessions/404'
