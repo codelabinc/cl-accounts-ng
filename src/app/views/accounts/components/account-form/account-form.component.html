@@ -1,5 +1,5 @@
-<div fxLayout="column wrap" fxLayoutAlign="center center">
-    <mat-spinner *ngIf="working"></mat-spinner>
+<div class="loading" fxLayout="row wrap" fxLayoutAlign="center center" *ngIf="working">
+        <mat-spinner ></mat-spinner>
 </div>
 <form fxFlex.gt-md="100" fxFlex.lt-md="100" fxLayout="column wrap" fxLayoutGap="30px" [formGroup]="doForm"
     (ngSubmit)="onSubmit()">
@@ -125,7 +125,7 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="end stretch" fxLayoutGap="20px">
         <button mat-raised-button color="primary" type="submit" [disabled]="working">Save</button>
-        <button mat-raised-button color="warn" (click)="onClick">Cancel</button>
+        <button mat-raised-button color="warn" type="reset">Cancel</button>
     </div>
 
 </form>
