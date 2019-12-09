@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { User } from '../model/user';
+import { AuthenticationService } from '../views/sessions/services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ import { User } from '../model/user';
 export class UserService {
 
  private loggedInUser: User;
-  constructor() {
+  constructor(authenticationService: AuthenticationService) {
     const helper = new JwtHelperService();
-    const decodedToken = helper.decodeToken(localStorage.getItem('cl_token'));
+    const decodedToken = helper.decodeToken(authenticationService.getToken());
     this.buildUser(decodedToken);
   }
 
