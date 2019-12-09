@@ -8,6 +8,7 @@ import { MatProgressSpinnerModule, MatPaginatorModule, MatSortModule,
   MatDividerModule, MatSelectModule, MatMenuModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AccountsModule } from '../accounts/accounts.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatSelectModule,
     FormsModule,
     MatMenuModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    AccountsModule
   ]
 })
 export class UsersModule { }

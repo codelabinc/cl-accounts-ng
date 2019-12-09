@@ -15,8 +15,12 @@
         </div>
         <mat-divider></mat-divider>
       </div>
+
+      <div fxFlex="calc(20%-30px)" class="plr-30">
+        <app-account-autocomplete-chip (valueChanged)="accountsFilterChanged($event)"></app-account-autocomplete-chip>
+      </div>
   
-      <div fxFlex="calc(80%-30px)">
+      <div fxFlex="calc(60%-30px)">
         <div>
           <div *ngIf="dataSource.loading$ | async">
             <mat-spinner style="margin:0 auto;"></mat-spinner>

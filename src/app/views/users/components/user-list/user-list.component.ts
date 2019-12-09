@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { UserDataSource } from '../../datasource/user-data-source';
 import { PortalUserService } from '../../services/portal-user.service';
+import { SelectUi } from '../../../../model/master-records';
 
 @Component({
   selector: 'app-user-list',
@@ -62,5 +63,11 @@ export class UserListComponent implements OnInit, AfterViewInit {
     filter.page = this.paginator.pageIndex;
     filter.size = this.paginator.pageSize;
     this.dataSource.loadUsers(filter);
+  }
+
+  accountsFilterChanged($event) {
+    const accounts: SelectUi[] = $event;
+    const filter = {'portalAccount.code': accounts.map(x=> x.value),'portalUser.authenticationType': 'IDENTIFIER_PASSWORD_CREDENTIALS'};
+    this.onPage(filter);
   }
 }
