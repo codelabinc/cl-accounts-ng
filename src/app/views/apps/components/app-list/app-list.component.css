@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+  }
+  
+
+  .filter {
+    display: block;
+  }
+
+
+.mat-icon green {
+  color: green;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  font-size: medium;
+}
+
+.mat-row:hover {
+  background-color: rgba(212, 209, 209, 0.15);
+  cursor: pointer;
+}

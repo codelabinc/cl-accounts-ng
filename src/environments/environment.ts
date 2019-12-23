@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   apiBaseUrl: '/api',
-  xAccountCode: "CL00001"
+  xAccountCode: "CL00002"
 };

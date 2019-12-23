@@ -30,35 +30,24 @@ export const rootRouterConfig: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'dashboard', 
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule), 
-        data: { title: 'Dashboard', breadcrumb: 'DASHBOARD'}
+        path: 'users', 
+        loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule), 
+        data: { title: 'Users', breadcrumb: 'USERS'}
       },
-    
-    ]
-  },
-  {
-    path: '', 
-    component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
-    children: [
+      {
+        path: 'apps', 
+        loadChildren: () => import('./views/apps/apps.module').then(m => m.AppsModule), 
+        data: { title: 'Apps', breadcrumb: 'APPS'}
+      },
       {
         path: 'accounts', 
         loadChildren: () => import('./views/accounts/accounts.module').then(m => m.AccountsModule), 
         data: { title: 'Accounts', breadcrumb: 'ACCOUNTS'}
       },
-    
-    ]
-  },
-  {
-    path: '', 
-    component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
-    children: [
       {
-        path: 'users', 
-        loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule), 
-        data: { title: 'Users', breadcrumb: 'USERS'}
+        path: 'dashboard', 
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule), 
+        data: { title: 'Dashboard', breadcrumb: 'DASHBOARD'}
       },
     
     ]
