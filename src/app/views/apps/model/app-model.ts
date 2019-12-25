@@ -3,3 +3,8 @@ export interface App {
     code: string;
     dateCreated: string;
 }
+
+export interface AppStatistics {
+    totalActiveAccounts: number;
+    totalActiveUsers: number;
+}
