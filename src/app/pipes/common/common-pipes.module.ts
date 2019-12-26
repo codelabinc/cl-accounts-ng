@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RelativeTimePipe } from './relative-time.pipe';
 import { ExcerptPipe } from "./excerpt.pipe";
+import { UnderscoreToSpacePipe } from './underscore-to-space.pipe';
 @NgModule({
   declarations: [
     RelativeTimePipe,
-    ExcerptPipe
+    ExcerptPipe,
+    UnderscoreToSpacePipe,
   ],
   exports: [
     RelativeTimePipe,
-    ExcerptPipe
+    ExcerptPipe,
+    UnderscoreToSpacePipe
   ]
 })
 export class CommonPipesModule { }

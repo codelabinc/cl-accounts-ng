@@ -1,0 +1,40 @@
+<form fxLayout="column wrap" fxLayoutGap="20px" fxFlex="50%" [formGroup]="doForm" (ngSubmit)="onSaveClick()">
+    <div>
+        <label>WebHook Notification URLs</label>
+        <mat-divider></mat-divider>
+    </div>
+    <mat-form-field>
+        <mat-label>Test WebHook URL</mat-label>
+        <input matInput placeholder="e.g https://test.domain.com" formControlName="testUrl">
+        <mat-error></mat-error>
+        <mat-hint>Required *</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Live WebHook URL</mat-label>
+        <input matInput placeholder="e.g https://live.domain.com" formControlName="liveUrl">
+        <mat-error></mat-error>
+        <mat-hint>Required *</mat-hint>
+    </mat-form-field>
+
+    <div>
+        <label>Events (sample payload is also shown)</label>
+        <mat-divider></mat-divider>
+    </div>
+
+    <mat-selection-list #eventsMatList formArrayName="events">
+        <mat-list-option *ngFor="let event of allEvents" [selected]="event.selected" [value]="event.type">
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="30px">
+                <div fxFlex="calc(30% - 30px)">{{event.type | underscoreToSpace| titlecase}}</div>
+                <div fxFlex="calc(40% - 30px)">
+                    <ngx-json-viewer [json]="event.payload" style="font-size: smaller;" [expanded]="false"></ngx-json-viewer>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list-option>
+    </mat-selection-list>
+
+    <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="end center">
+        <button mat-raised-button color="warn" type="reset"> Cancel</button>
+        <button mat-raised-button color="primary" type="submit"> Save</button>
+    </div>
+</form>

@@ -14,6 +14,7 @@ import { GlobalErrorHandler } from './services/global-error-handler';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 
 
+
 const modules = [
   MatButtonModule,
   MatFormFieldModule,
@@ -27,7 +28,7 @@ const modules = [
     BrowserAnimationsModule,
     HttpClientModule,
     AppCommonModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: false })
+    RouterModule.forRoot(rootRouterConfig, { useHash: false }),
   ],
   declarations: [AppComponent],
   providers: [

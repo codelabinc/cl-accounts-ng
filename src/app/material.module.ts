@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatDividerModule, MatSelectModule, MatTabsModule, MatCardModule, MatChipsModule } from '@angular/material';
+import { MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatDividerModule, MatSelectModule, MatTabsModule, MatCardModule, MatChipsModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -28,7 +28,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
         MatMenuModule,
         MatTabsModule,
         MatCardModule,
-        MatChipsModule
+        MatChipsModule,
+        MatListModule
     ],
     exports: [
         MatProgressSpinnerModule,
@@ -47,7 +48,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
         MatMenuModule,
         MatTabsModule,
         MatCardModule,
-        MatChipsModule
+        MatChipsModule,
+        MatListModule
     ]
 })
 export class MaterialModule { }
