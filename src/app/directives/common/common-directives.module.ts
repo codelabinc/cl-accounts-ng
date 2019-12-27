@@ -9,14 +9,14 @@ import { ScrollToDirective } from './scroll-to.directive';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     EqualValidatorDirective,
     SideNavAccordionDirective,
     AppAccordionDirective,
     FontSizeDirective,
-    ScrollToDirective
+    ScrollToDirective,
   ],
   exports: [
     EqualValidatorDirective,

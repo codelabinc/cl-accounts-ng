@@ -14,6 +14,7 @@ import { ClValidators } from 'app/validators/cl-validators';
 export class AppWebHookFormComponent implements OnInit, AfterViewInit {
 
   doForm: FormGroup;
+  customErrors = {invalidUrl: 'Please enter a valid URL', required: 'field is required'}
   @ViewChild('selectAllMatListOptionCtrl', { static: false }) selectAllMatListOptionCtrl: MatListOption;
   @ViewChild('eventsMatList', { static: false }) eventsMatList: MatSelectionList;
   @Input() app: App;
@@ -28,7 +29,7 @@ export class AppWebHookFormComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.doForm = this.formBuilder.group({
-      testUrl: ['', [Validators.required, ClValidators.urlValidator]],
+      testUrl: ['', [Validators.required, Validators.minLength(3), ClValidators.urlValidator]],
       liveUrl: ['', [Validators.required, ClValidators.urlValidator]],
       events: this.formBuilder.array([])
     });
@@ -55,6 +56,7 @@ export class AppWebHookFormComponent implements OnInit, AfterViewInit {
   }
 
   onSaveClick() {
+    console.log(this.doForm);
     if (!this.doForm.valid) {
       this.snackBar.open('Please fill all required fields', 'Dismiss');
       return;

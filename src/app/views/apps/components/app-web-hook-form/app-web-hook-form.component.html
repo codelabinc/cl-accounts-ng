@@ -6,13 +6,12 @@
     <mat-form-field>
         <mat-label>Test WebHook URL</mat-label>
         <input matInput placeholder="e.g https://test.domain.com" formControlName="testUrl">
-        <mat-error></mat-error>
+        <!-- <mat-error></mat-error> -->
         <mat-hint>Required *</mat-hint>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Live WebHook URL</mat-label>
         <input matInput placeholder="e.g https://live.domain.com" formControlName="liveUrl">
-        <mat-error></mat-error>
         <mat-hint>Required *</mat-hint>
     </mat-form-field>
 
@@ -26,7 +25,8 @@
             <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="30px">
                 <div fxFlex="calc(30% - 30px)">{{event.type | underscoreToSpace| titlecase}}</div>
                 <div fxFlex="calc(40% - 30px)">
-                    <ngx-json-viewer [json]="event.payload" style="font-size: smaller;" [expanded]="false"></ngx-json-viewer>
+                    <ngx-json-viewer [json]="event.payload" style="font-size: smaller;" [expanded]="false">
+                    </ngx-json-viewer>
                 </div>
             </div>
             <mat-divider></mat-divider>

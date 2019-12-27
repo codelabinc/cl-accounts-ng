@@ -10,7 +10,8 @@ import { AppWebHookComponent } from './components/app-web-hook/app-web-hook.comp
 import { AppWebHookFormComponent } from './components/app-web-hook-form/app-web-hook-form.component';
 import { CommonPipesModule } from 'app/pipes/common/common-pipes.module';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
-
+import { CommonDirectivesModule } from 'app/directives/common/common-directives.module';
+import { ControlErrorModule } from 'app/control-error/control-error.module';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     CommonPipesModule,
     MaterialModule,
     AppsRoutingModule,
-    NgxJsonViewerModule
+    NgxJsonViewerModule,
+    CommonDirectivesModule,
+    ControlErrorModule
   ]
 })
 export class AppsModule { }
