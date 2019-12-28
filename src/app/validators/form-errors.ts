@@ -2,7 +2,8 @@ import { InjectionToken } from '@angular/core';
 
 export const defaultErrors = {
     required: (error) => `This field is required`,
-    minlength: ({ requiredLength, actualLength }) => `Expected ${requiredLength} but got ${actualLength}`
+    minlength: ({ requiredLength, actualLength }) => `Expected ${requiredLength} but got ${actualLength}`,
+    invalidUrl: (error) => `url is invalid`
   }
   
   export const FORM_ERRORS = new InjectionToken('FORM_ERRORS', {

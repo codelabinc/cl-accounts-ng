@@ -3,7 +3,7 @@ import { fromEvent } from 'rxjs';
 import { tap, shareReplay } from 'rxjs/operators';
 
 @Directive({
-  selector: '[form]'
+  selector: 'form'
 })
 export class FormSubmitDirective {
 

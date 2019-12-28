@@ -29,7 +29,7 @@ export class AppWebHookFormComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.doForm = this.formBuilder.group({
-      testUrl: ['', [Validators.required, Validators.minLength(3), ClValidators.urlValidator]],
+      testUrl: ['', [Validators.required, ClValidators.urlValidator]],
       liveUrl: ['', [Validators.required, ClValidators.urlValidator]],
       events: this.formBuilder.array([])
     });
