@@ -1,0 +1,18 @@
+<div fxLayout="column wrap" fxLayoutGap="30px">
+
+    <div fxFlex="calc(20%-30px)">
+        <div fxLayout="row wrap" class="plr-30" fxLayoutAlign="start center">
+            <div>
+                <h3>Web Hook</h3>
+                <p class="header-desc">Provide Endpoints, to be notified when certain events occur that affect entities in this App.</p>
+            </div>
+           
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+    <div fxFlex="calc(80%-30px)">
+        <div class="plr-30">
+            <app-app-web-hook-form [app]="app" [selectedEvents]="getEventNotifications()" (onSubmit)="onSubmit($event)"></app-app-web-hook-form>
+        </div>
+    </div>
+</div>

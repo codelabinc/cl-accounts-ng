@@ -1,32 +1,55 @@
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatPaginatorModule } from '@angular/material';
-
+import { MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatDividerModule, MatSelectModule, MatTabsModule, MatCardModule, MatChipsModule, MatListModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
 
     imports: [
+        MatProgressSpinnerModule,
+        MatPaginatorModule,
+        MatInputModule,
+        MatIconModule,
+        MatSortModule,
         MatTableModule,
-        MatPaginatorModule
+        MatButtonModule,
+        MatIconModule,
+        FlexLayoutModule,
+        MatDividerModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        FormsModule,
+        MatMenuModule,
+        MatTabsModule,
+        MatCardModule,
+        MatChipsModule,
+        MatListModule
     ],
     exports: [
+        MatProgressSpinnerModule,
+        MatPaginatorModule,
+        MatInputModule,
+        MatSortModule,
         MatTableModule,
-        MatPaginatorModule
+        MatIconModule,
+        MatButtonModule,
+        MatIconModule,
+        FlexLayoutModule,
+        MatDividerModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        FormsModule,
+        MatMenuModule,
+        MatTabsModule,
+        MatCardModule,
+        MatChipsModule,
+        MatListModule
     ]
 })
 export class MaterialModule { }

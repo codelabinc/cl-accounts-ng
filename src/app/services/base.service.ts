@@ -5,7 +5,7 @@ import { Page } from 'app/model/page/page';
 ​
 export class BaseService<T> {
 ​
-  private _serviceName;
+  protected _serviceName;
 ​
   constructor(protected http: HttpClient, serviceName: string) {
     this._serviceName = serviceName;

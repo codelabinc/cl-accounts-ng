@@ -1,0 +1,60 @@
+<div fxLayout="column wrap" fxLayoutGap="30px">
+
+  <div fxFlex="calc(20%-30px)">
+    <div fxLayout="row wrap" class="plr-30" fxLayoutAlign="start center">
+      <div>
+        <h3>App Info</h3>
+        <p class="header-desc">Statistics and information about this App</p>
+      </div>
+
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+
+  <div fxFlex="calc(80%-30px)">
+    <div class="plr-30">
+      <div fxLayout="row" fxLayoutWrap="wrap" class="mt-50"
+        *ngIf="appStatistics$ | async as appStatistics; else loading">
+        <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
+          <mat-card>
+            <mat-card-title fxLayoutAlign="start center">
+              <small>Accounts</small>
+              <span fxFlex></span>
+              <mat-chip class="icon-chip" color="primary" selected="true">
+                <mat-icon>trending_up</mat-icon>20%
+              </mat-chip>
+            </mat-card-title>
+            <mat-card-content>
+              <h3 class="m-0 font-normal">{{appStatistics.totalActiveAccounts}}</h3>
+              <small class="text-muted">Since beginning</small>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <button mat-button color="primary">Show all</button>
+          </mat-card>
+        </div>
+
+        <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
+          <mat-card>
+            <mat-card-title>
+              <small class="text-muted">Users</small>
+              <span fxFlex></span>
+              <mat-chip class="icon-chip" color="warn" selected="true">
+                <mat-icon>trending_down</mat-icon>2%
+              </mat-chip>
+            </mat-card-title>
+            <mat-card-content>
+              <h3 class="m-0 font-normal">{{appStatistics.totalActiveUsers}}</h3>
+              <small class="text-muted">Since beginning</small>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <button mat-button color="primary">Show all</button>
+
+          </mat-card>
+        </div>
+      </div>
+      <ng-template #loading>
+        <mat-spinner style="margin:0 auto;"></mat-spinner>
+      </ng-template>
+    </div>
+  </div>
+</div>

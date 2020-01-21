@@ -1,32 +1,29 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { AppsRoutingModule } from './apps-routing.module';
 import { AppListComponent } from './components/app-list/app-list.component';
-import { MatProgressSpinnerModule, MatInputModule, MatTableModule, MatIconModule, MatDividerModule, MatButtonModule, MatSortModule, MatPaginatorModule, MatSelectModule, MatMenuModule } from '@angular/material';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppConfigurationComponent } from './components/app-configuration/app-configuration.component';
+import { MaterialModule } from 'app/material.module';
+import { AppInfoComponent } from './components/app-info/app-info.component';
+import { CommonModule } from '@angular/common';
+import { AppWebHookComponent } from './components/app-web-hook/app-web-hook.component';
+import { AppWebHookFormComponent } from './components/app-web-hook-form/app-web-hook-form.component';
+import { CommonPipesModule } from 'app/pipes/common/common-pipes.module';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { CommonDirectivesModule } from 'app/directives/common/common-directives.module';
+import { ControlErrorModule } from 'app/control-error/control-error.module';
 
 
 @NgModule({
-  declarations: [AppListComponent],
+  declarations: [AppListComponent, AppConfigurationComponent, AppInfoComponent, AppWebHookComponent, AppWebHookFormComponent],
   imports: [
     CommonModule,
-    CommonModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatSortModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    FlexLayoutModule,
-    MatDividerModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    FormsModule,
-    MatMenuModule,
-    AppsRoutingModule
+    CommonPipesModule,
+    MaterialModule,
+    AppsRoutingModule,
+    NgxJsonViewerModule,
+    CommonDirectivesModule,
+    ControlErrorModule
   ]
 })
 export class AppsModule { }

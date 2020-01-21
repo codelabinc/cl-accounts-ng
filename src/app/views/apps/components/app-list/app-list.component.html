@@ -1,108 +1,114 @@
 <div class="panel-area">
-    <div fxLayout="column wrap" fxLayoutGap="30px">
-      <div fxFlex="calc(20%-30px)">
-        <div fxLayout="row wrap" class="plr-30" fxLayoutAlign="start center">
-          <div>
-            <h1>Apps</h1>
-            <p class="header-desc">A list of all Apps in this space</p>
-          </div>
-  
-          <span fxFlex="1 1 auto"></span>
-          <button mat-raised-button color="primary" [routerLink]="['new']">
-            <mat-icon class="mat-18">add</mat-icon>
-            Add App
-          </button>
+  <div fxLayout="column wrap" fxLayoutGap="30px">
+    <div fxFlex="calc(20%-30px)">
+      <div fxLayout="row wrap" class="plr-30" fxLayoutAlign="start center">
+        <div>
+          <h1>Apps</h1>
+          <p class="header-desc">A list of all Apps in this space</p>
         </div>
-        <mat-divider></mat-divider>
-      </div>
 
-      <!-- <div fxFlex="calc(10%-30px)" class="plr-30">
+        <span fxFlex="1 1 auto"></span>
+        <button mat-raised-button color="primary" [routerLink]="['new']">
+          <mat-icon class="mat-18">add</mat-icon>
+          Add App
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <!-- <div fxFlex="calc(10%-30px)" class="plr-30">
         <app-account-autocomplete-chip (valueChanged)="accountsFilterChanged($event)"></app-account-autocomplete-chip>
       </div> -->
-  
-      <div fxFlex="calc(70%-30px)">
+
+    <div fxFlex="calc(70%-30px)">
+      <div>
+        <div *ngIf="dataSource.loading$ | async">
+          <mat-spinner style="margin:0 auto;"></mat-spinner>
+        </div>
+
         <div>
-          <div *ngIf="dataSource.loading$ | async">
-            <mat-spinner style="margin:0 auto;"></mat-spinner>
-          </div>
-  
-          <div>
-            <table mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDisableClear
-              matSortDirection="desc">
-  
-              <!-- State Column -->
-              <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef>Status</th>
-                <td mat-cell *matCellDef="let row">
-                  <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="5px" *ngIf="row.status === 'ACTIVE'">
-                    <mat-icon [ngStyle]="{'color': 'green'}" class="mat-8">check_circle</mat-icon>
-                    <span>{{row.status | titlecase}}</span>
-                  </div>
-                  <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="5px" *ngIf="row.status === 'INACTIVE'">
-                    <mat-icon color="warning" class="mat-8">warning</mat-icon>
-                    <span>{{row.status | titlecase}}</span>
-                  </div>
-                </td>
-              </ng-container>
-              <!-- Number Column -->
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef>
-                  Name
-                  <!-- <mat-form-field class="filter" floatLabel="never">
+          <table mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDisableClear
+            matSortDirection="desc">
+
+            <!-- State Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let row">
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="5px" *ngIf="row.status === 'ACTIVE'">
+                  <mat-icon [ngStyle]="{'color': 'green'}" class="mat-8">check_circle</mat-icon>
+                  <span>{{row.status | titlecase}}</span>
+                </div>
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="5px"
+                  *ngIf="row.status === 'INACTIVE'">
+                  <mat-icon color="warning" class="mat-8">warning</mat-icon>
+                  <span>{{row.status | titlecase}}</span>
+                </div>
+              </td>
+            </ng-container>
+            <!-- Number Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>
+                Name
+                <!-- <mat-form-field class="filter" floatLabel="never">
                     <mat-label>Search</mat-label>
                     <input matInput [formControl]="nameFilter">
                   </mat-form-field> -->
-                </th>
-                <td mat-cell *matCellDef="let row">{{row.name | titlecase}}</td>
-              </ng-container>
-  
-              <!-- Title Column -->
-              <ng-container matColumnDef="code">
-                <th mat-header-cell *matHeaderCellDef>Code
-                  <!-- <mat-form-field class="filter" floatLabel="never">
+              </th>
+              <td mat-cell *matCellDef="let row" [routerLink]="[row.code]">{{row.name | titlecase}}</td>
+            </ng-container>
+
+            <!-- Title Column -->
+            <ng-container matColumnDef="code">
+              <th mat-header-cell *matHeaderCellDef>Code
+                <!-- <mat-form-field class="filter" floatLabel="never">
                     <mat-label>Search</mat-label>
                     <input matInput [formControl]="codeFilter">
                   </mat-form-field> -->
-                </th>
-                <td mat-cell *matCellDef="let row">{{row.code}}</td>
-              </ng-container>
+              </th>
+              <td mat-cell *matCellDef="let row">{{row.code}}</td>
+            </ng-container>
 
-  
-              <!-- Created Column -->
-              <ng-container matColumnDef="dateCreated">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-                  DateCreated
-                </th>
-                <td mat-cell *matCellDef="let row">{{row.dateCreated | date:'medium'}}</td>
-              </ng-container>
-  
-              <ng-container matColumnDef="action">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-                    
-                  </th>
-                  <td mat-cell *matCellDef="let row">
-                      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                          <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #menu="matMenu">
-                          <button mat-menu-item>
-                            <mat-icon >power_off</mat-icon>
-                            <span>Deactivate</span>
-                          </button>
-                         
-                        </mat-menu>
-                        
-                  </td>
-                </ng-container>
-    
-  
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-          </div>
-  
-          <mat-paginator [length]="dataSource.totalElements" [hidePageSize]="true" [pageSize]="30" [pageSizeOptions]="[30, 50, 100]"></mat-paginator>
+
+            <!-- Created Column -->
+            <ng-container matColumnDef="dateCreated">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                DateCreated
+              </th>
+              <td mat-cell *matCellDef="let row">{{row.dateCreated | date:'medium'}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button [routerLink]="[row.code]" mat-menu-item>
+                    <mat-icon>build</mat-icon>
+                    <span>Configuration</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>power_off</mat-icon>
+                    <span>Deactivate</span>
+                  </button>
+
+                </mat-menu>
+
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
         </div>
+
+        <mat-paginator [length]="dataSource.totalElements" [hidePageSize]="true" [pageSize]="30"
+          [pageSizeOptions]="[30, 50, 100]"></mat-paginator>
       </div>
     </div>
   </div>
+</div>

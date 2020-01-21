@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { environment } from 'environments/environment';
 import { Country, State } from '../model/master-records';
+import { EventNotification } from 'app/views/apps/model/app-model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,11 @@ export class MasterRecordService {
       params: filter
     });
   }
+
+  getEventNotificationTypes() {
+    return this.httpClient.get<EventNotification[]>(`${environment.apiBaseUrl}/${this.serviceName}/event-notification-types`);
+  }
+
   getAccountTypes(filter: any) {
     return this.httpClient.get<string[]>(`${environment.apiBaseUrl}/${this.serviceName}/account-types`, {
       params: filter

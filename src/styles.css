@@ -1,23 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* margin left */
 .ml-5 {
     margin-left: 5px;
-  }
-  .mr-5 {
-    margin-right: 5px;
-  }
-  
-  .ml-10 {
-    margin-left: 10px;
-  }
-  .mr-10 {
-    margin-right: 10px;
-  }
-  .header-desc {
-      color: gray;
-  }
+}
 
-  .plr-10 {
+.ml-10 {
+  margin-left: 10px;
+}
+
+/* margin left */
+
+
+  /* margin right */
+.mr-5 {
+    margin-right: 5px;
+} 
+.mr-10 {
+    margin-right: 10px;
+}
+/* margin  right */
+  
+
+/* margin bottom */
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+/* margin bottom */
+
+/* margin top */
+.mt-50 {
+  margin-top: 50px;
+}
+/* margin-top */
+  
+ 
+.header-desc {
+      color: gray;
+}
+
+.plr-10 {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -31,6 +54,8 @@
   background-color: white;
   border-radius: 5px;
 }
-.mb-5 {
-  margin-bottom: 5px;
+
+#margin
+.m-10 {
+  margin: 10px;
 }
