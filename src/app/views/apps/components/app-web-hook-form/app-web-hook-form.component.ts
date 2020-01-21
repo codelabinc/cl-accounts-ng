@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input, Output, EventEmitter, QueryList, A
 import { MasterRecordService } from 'app/services/master-record.service';
 import { FormBuilder, Form, Validators, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { EventNotification, App, WebHook } from '../../model/app-model';
-import { MatList, MatSnackBar, MatSelectionList, MatListOption, MatSelectionListChange } from '@angular/material';
+import { MatSnackBar, MatSelectionList, MatListOption, MatSelectionListChange } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { ClValidators } from 'app/validators/cl-validators';
 
@@ -14,25 +14,35 @@ import { ClValidators } from 'app/validators/cl-validators';
 export class AppWebHookFormComponent implements OnInit, AfterViewInit {
 
   doForm: FormGroup;
-  customErrors = {invalidUrl: 'Please enter a valid URL', required: 'field is required'}
+  customErrors = { invalidUrl: 'Please enter a valid URL', required: 'Field is required' }
   @ViewChild('selectAllMatListOptionCtrl', { static: false }) selectAllMatListOptionCtrl: MatListOption;
   @ViewChild('eventsMatList', { static: false }) eventsMatList: MatSelectionList;
   @Input() app: App;
   @Input() selectedEvents: EventNotification[];
+  eventsIsPristine = true;
 
   allEvents: EventNotification[] = [];
 
-  @Output() submit: EventEmitter<WebHook> = new EventEmitter();
+  @Output() onSubmit: EventEmitter<WebHook> = new EventEmitter();
 
   constructor(private masterRecordService: MasterRecordService,
     private formBuilder: FormBuilder, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.doForm = this.formBuilder.group({
-      testUrl: ['', [Validators.required, ClValidators.urlValidator]],
-      liveUrl: ['', [Validators.required, ClValidators.urlValidator]],
-      events: this.formBuilder.array([])
-    });
+    if (this.app.webHook) {
+      this.doForm = this.formBuilder.group({
+        testUrl: [this.app.webHook.testUrl, [Validators.required, ClValidators.urlValidator]],
+        liveUrl: [this.app.webHook.liveUrl, [Validators.required, ClValidators.urlValidator]],
+        events: this.formBuilder.array(this.selectedEvents.map(it => it.type))
+      });
+    } else {
+      this.doForm = this.formBuilder.group({
+        testUrl: ['', [Validators.required, ClValidators.urlValidator]],
+        liveUrl: ['', [Validators.required, ClValidators.urlValidator]],
+        events: this.formBuilder.array([])
+      });
+    }
+
 
     this.masterRecordService.getEventNotificationTypes()
       .pipe(
@@ -56,27 +66,33 @@ export class AppWebHookFormComponent implements OnInit, AfterViewInit {
   }
 
   onSaveClick() {
-    console.log(this.doForm);
     if (!this.doForm.valid) {
       this.snackBar.open('Please fill all required fields', 'Dismiss');
       return;
     }
     const webHook: WebHook = this.doForm.value;
-    this.submit.emit(webHook);
+    this.onSubmit.emit(webHook);
+  }
+
+  get submitText() {
+    return this.app.webHook ? 'Update': 'Save';
   }
 
   ngAfterViewInit(): void {
     this.eventsMatList.selectionChange.subscribe((it: MatSelectionListChange) => {
+      this.eventsIsPristine = false;
       const eventArray = this.doForm.get('events') as FormArray;
-        const elementIndex = eventArray.controls.findIndex(x => x.value === it.option.value);
-        if (elementIndex != -1) {
-          eventArray.removeAt(elementIndex);
-        } else {
-          eventArray.push(new FormControl(it.option.value));
-        }
-      })
-  
+      const elementIndex = eventArray.controls.findIndex(x => x.value === it.option.value);
+      if (elementIndex != -1) {
+        eventArray.removeAt(elementIndex);
+      } else {
+        eventArray.push(new FormControl(it.option.value));
+      }
+    })
+  }
 
+  get disabled() {
+    return this.doForm.pristine && this.eventsIsPristine;
   }
 
 }

@@ -40,6 +40,7 @@ export class ControlErrorsDirective {
           const getError = this.errors[firstKey];
           const text = this.customErrors[firstKey] || getError(controlErrors[firstKey]);
           this.setError(text);
+          //remove mat-hint
         } else if (this.ref) {
           this.setError(null);
         }

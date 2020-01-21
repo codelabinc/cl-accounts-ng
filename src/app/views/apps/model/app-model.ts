@@ -3,6 +3,8 @@ export interface App {
     code: string;
     description ?: string;
     dateCreated: string;
+    webHook: WebHook;
+    events: EventNotification[];
 }
 
 export interface AppStatistics {

@@ -12,7 +12,7 @@
     </div>
     <div fxFlex="calc(80%-30px)">
         <div class="plr-30">
-            <app-app-web-hook-form></app-app-web-hook-form>
+            <app-app-web-hook-form [app]="app" [selectedEvents]="getEventNotifications()" (onSubmit)="onSubmit($event)"></app-app-web-hook-form>
         </div>
     </div>
 </div>
