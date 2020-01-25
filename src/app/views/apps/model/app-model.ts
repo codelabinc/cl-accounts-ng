@@ -5,6 +5,7 @@ export interface App {
     dateCreated: string;
     webHook: WebHook;
     events: EventNotification[];
+    roles: string[];
 }
 
 export interface AppStatistics {
