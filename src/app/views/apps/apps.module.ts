@@ -12,10 +12,14 @@ import { CommonPipesModule } from 'app/pipes/common/common-pipes.module';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { CommonDirectivesModule } from 'app/directives/common/common-directives.module';
 import { ControlErrorModule } from 'app/control-error/control-error.module';
+import { AppPermissionComponent } from './components/app-permission/app-permission.component';
+import { AppPermissionFormComponent } from './components/app-permission-form/app-permission-form.component';
+import { AppRoleComponent } from './components/app-role/app-role.component';
+import { AppRoleFormComponent } from './components/app-role-form/app-role-form.component';
 
 
 @NgModule({
-  declarations: [AppListComponent, AppConfigurationComponent, AppInfoComponent, AppWebHookComponent, AppWebHookFormComponent],
+  declarations: [AppListComponent, AppConfigurationComponent, AppInfoComponent, AppWebHookComponent, AppWebHookFormComponent, AppPermissionComponent, AppPermissionFormComponent, AppRoleComponent, AppRoleFormComponent],
   imports: [
     CommonModule,
     CommonPipesModule,

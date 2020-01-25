@@ -1,0 +1,45 @@
+<div fxLayout="column wrap" fxLayoutGap="20px" fxFlex.gt-md="50%">
+    <div>
+        <form fxLayout="column wrap" [formGroup]="doForm" fxLayoutGap="20px" (ngSubmit)="onSaveClick()">
+            <div>
+                <label>Specify your App Roles Here. Use Underscores between words. E.g SITE_SUPERVISOR</label>
+                <mat-divider></mat-divider>
+            </div>
+            <div fxLayout="row wrap">
+                <mat-form-field controlErrorContainer fxFlex="100">
+                    <mat-label>Role Name</mat-label>
+                    <input matInput placeholder="e.g MANAGER" formControlName="name" [customErrors]="customErrors">
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row wrap" fxLayoutAlign="end stretch">
+                <button mat-raised-button color="primary" type="submit">
+                    <mat-icon>add</mat-icon> Add
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+
+    <div>
+        <div fxLayout="column wrap" fxLayoutGap="20px">
+            <div>
+                <label>All Roles for app</label>
+                <mat-divider></mat-divider>
+            </div>
+
+            <div *ngFor="let option of app.roles">
+                <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="20px">
+                    <div fxFlex="calc(80% - 20px)">{{option}}</div>
+                    <div fxFlex="calc(20% - 20px)">
+                        <button mat-icon-button color="warn" aria-label="Delete" (click)="onDeleteClick(option)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+        </div>
+    </div>
+</div>

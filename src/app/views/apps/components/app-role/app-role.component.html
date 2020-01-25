@@ -1,0 +1,18 @@
+<div fxLayout="column wrap" fxLayoutGap="30px">
+
+    <div fxFlex="calc(20%-30px)">
+        <div fxLayout="row wrap" class="plr-30" fxLayoutAlign="start center">
+            <div>
+                <h3>Roles</h3>
+                <p class="header-desc">Add or Remove Roles for this app.</p>
+            </div>
+           
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+    <div fxFlex="calc(80%-30px)">
+        <div class="plr-30">
+            <app-app-role-form [app]="app" (onSave)="handleSaveEvent($event)" (onDelete)="handleDeleteEvent($event)"></app-app-role-form>
+        </div>
+    </div>
+</div>
