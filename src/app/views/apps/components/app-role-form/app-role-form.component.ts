@@ -28,6 +28,9 @@ export class AppRoleFormComponent implements OnInit {
   }
 
   onSaveClick() {
+    if (!this.doForm.valid) {
+      return;
+    }
     this.onSave.emit(this.doForm.value);
     this.doForm.reset();
   }
