@@ -3,8 +3,8 @@
     <div fxFlex="calc(20%-30px)">
         <div fxLayout="row wrap" class="plr-30" fxLayoutAlign="start center">
             <div>
-                <h3>Role Permissions</h3>
-                <p class="header-desc">Manage Permissions for a given Role.</p>
+                <h3>App Permissions</h3>
+                <p class="header-desc">Define Permissions for this app Here.</p>
             </div>
            
         </div>
@@ -12,7 +12,8 @@
     </div>
     <div fxFlex="calc(80%-30px)">
         <div class="plr-30">
-            <app-app-permission-form [app]="app" (onAdd)="handleAddEvent($event)" (onDelete)="handleDeleteEvent($event)"></app-app-permission-form>
+            <app-permission-form [app]="app" (onSave)="handleSaveEvent($event)"
+            (onDelete)="handleDeleteEvent($event)"></app-permission-form>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@ import { AppsService } from '../../services/apps.service';
 import { App } from '../../model/app-model';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil, map } from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-app-configuration',
@@ -26,5 +26,11 @@ export class AppConfigurationComponent implements OnInit {
         this.app$ = this.appService.getByCode(code);
       });
   }
+
+  handleDataChange($event: App) {
+    console.log($event);
+    this.app$ = of($event);
+  }
+
 
 }

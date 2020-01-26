@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { App } from '../../model/app-model';
 import { RoleService } from '../../services/role.service';
 import { MatSnackBar } from '@angular/material';
@@ -13,6 +13,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AppRoleComponent implements OnInit {
 
   @Input() app: App;
+
+  @Output() onDataChange: EventEmitter<App> = new EventEmitter();
   constructor(
   private roleService: RoleService,
   private appService: AppsService,
@@ -26,6 +28,7 @@ export class AppRoleComponent implements OnInit {
     this.roleService.createRole(this.app.code, $event).subscribe(it => {
       this.appService.getByCode(this.app.code).subscribe(app => {
         this.app = app;
+        this.onDataChange.emit(app);
         this.snackBar.open('Role Created', 'Dismiss');
       });
     }, err => {
@@ -37,6 +40,7 @@ export class AppRoleComponent implements OnInit {
     this.roleService.deleteRole(this.app.code, $event).subscribe(it => {
       this.appService.getByCode(this.app.code).subscribe(app => {
         this.app = app;
+        this.onDataChange.emit(app);
         this.snackBar.open('Role Deleted', 'Dismiss');
       });
     }, (err: HttpErrorResponse) => {

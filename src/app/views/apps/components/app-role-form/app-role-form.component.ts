@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { App } from '../../model/app-model';
 import { AppConfirmService } from 'app/services/app-confirm/app-confirm.service';
+import { ClValidators } from 'app/validators/cl-validators';
 
 @Component({
   selector: 'app-app-role-form',
@@ -11,7 +12,7 @@ import { AppConfirmService } from 'app/services/app-confirm/app-confirm.service'
 export class AppRoleFormComponent implements OnInit {
 
   doForm: FormGroup;
-  customErrors = { required: 'Field is required' }
+  customErrors = { required: 'Field is required', whitespace: 'Whitespace not allowed' }
   @Input() app: App;
 
   @Output() onSave: EventEmitter<string> = new EventEmitter();
@@ -23,7 +24,7 @@ export class AppRoleFormComponent implements OnInit {
 
   ngOnInit() {
     this.doForm = this.fb.group({
-      name: ['', [Validators.required]]
+      name: ['', [Validators.required, ClValidators.noWhitespaceValidator]]
     })
   }
 

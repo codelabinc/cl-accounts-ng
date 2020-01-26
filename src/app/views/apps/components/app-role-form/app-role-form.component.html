@@ -31,9 +31,9 @@
 
             <div *ngFor="let option of app.roles">
                 <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="20px">
-                    <div fxFlex="calc(80% - 20px)">{{option}}</div>
+                    <div fxFlex="calc(80% - 20px)">{{option.name}}</div>
                     <div fxFlex="calc(20% - 20px)">
-                        <button mat-icon-button color="warn" aria-label="Delete" (click)="onDeleteClick(option)">
+                        <button mat-icon-button color="warn" aria-label="Delete" (click)="onDeleteClick(option.name)">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </div>

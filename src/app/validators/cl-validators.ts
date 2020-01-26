@@ -44,4 +44,13 @@ export class ClValidators {
             invalidNumber: true
         };
     }
+
+    static noWhitespaceValidator(control): any {
+        if(control.value.indexOf(' ') !== -1) {
+            return null;
+        }      
+        return {
+            whitespace: true
+        }
+    }
 }
