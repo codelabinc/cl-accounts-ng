@@ -16,10 +16,14 @@ import { AppPermissionComponent } from './components/app-permission/app-permissi
 import { AppPermissionFormComponent } from './components/app-permission-form/app-permission-form.component';
 import { AppRoleComponent } from './components/app-role/app-role.component';
 import { AppRoleFormComponent } from './components/app-role-form/app-role-form.component';
+import { AppPermissionMasterListComponent } from './components/app-permission-master-list/app-permission-master-list.component';
+import { PermissionFormComponent } from './components/permission-form/permission-form.component';
 
 
 @NgModule({
-  declarations: [AppListComponent, AppConfigurationComponent, AppInfoComponent, AppWebHookComponent, AppWebHookFormComponent, AppPermissionComponent, AppPermissionFormComponent, AppRoleComponent, AppRoleFormComponent],
+  declarations: [AppListComponent, AppConfigurationComponent, AppInfoComponent, AppWebHookComponent,
+    AppWebHookFormComponent, AppPermissionComponent, AppPermissionFormComponent, AppRoleComponent,
+    AppRoleFormComponent, AppPermissionMasterListComponent, PermissionFormComponent],
   imports: [
     CommonModule,
     CommonPipesModule,

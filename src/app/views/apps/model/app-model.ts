@@ -5,7 +5,9 @@ export interface App {
     dateCreated: string;
     webHook: WebHook;
     events: EventNotification[];
-    roles: string[];
+    roles: Role[];
+    permissions: Permission[];
+    appPermissions: Permission[];
 }
 
 export interface AppStatistics {
@@ -25,4 +27,21 @@ export interface WebHook {
     testUrl: string;
     liveUrl: string;
     events: string[];
+}
+
+export interface Role {
+    name: string;
+    id: number;
+    app: App;
+}
+
+export interface PermissionFactory {
+    name: string,
+    role: string;
+}
+
+export interface Permission {
+    name: string;
+    id: number;
+    role: Role;
 }

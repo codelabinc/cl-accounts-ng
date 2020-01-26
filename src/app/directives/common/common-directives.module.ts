@@ -6,6 +6,7 @@ import { SideNavAccordionDirective } from './sidenav-accordion.directive';
 import { AppAccordionDirective } from './app-accordion.directive';
 import { FontSizeDirective } from './font-size.directive';
 import { ScrollToDirective } from './scroll-to.directive';
+import { SpaceToUnderscoreDirective } from './space-to-underscore.directive';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { ScrollToDirective } from './scroll-to.directive';
     AppAccordionDirective,
     FontSizeDirective,
     ScrollToDirective,
+    SpaceToUnderscoreDirective,
   ],
   exports: [
     EqualValidatorDirective,

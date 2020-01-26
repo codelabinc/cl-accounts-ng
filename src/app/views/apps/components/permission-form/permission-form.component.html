@@ -1,0 +1,30 @@
+<div fxLayout="column wrap" fxLayoutGap="20px" fxFlex.gt-md="50%">
+    <div>
+        <div fxLayout="column wrap" fxLayoutGap="20px">
+            <div>
+                <label>Specify your App Permissions Here. Use Underscores between words. E.g CREATE_USER, EDIT_USER</label>
+                <mat-divider></mat-divider>
+            </div>
+
+            <div fxLayout="row wrap">
+                <mat-form-field fxFlex="100">
+                    <mat-chip-list #chipList aria-label="Permission">
+                      <mat-chip *ngFor="let item of app.appPermissions" [selectable]="selectable"
+                               [removable]="removable" (removed)="remove(item)">
+                        {{item.name}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                      <input placeholder="New Permission..."
+                             [matChipInputFor]="chipList"
+                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                             [matChipInputAddOnBlur]="addOnBlur"
+                             (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                  </mat-form-field>
+                  
+            </div>
+
+        </div>
+    </div>
+
+</div>
