@@ -8,18 +8,22 @@
           </div>
   
           <span fxFlex="1 1 auto"></span>
-          <button mat-raised-button color="primary" [routerLink]="['new']">
+          <!-- <button mat-raised-button color="primary" [routerLink]="['new']">
             <mat-icon class="mat-18">add</mat-icon>
             Add User
-          </button>
+          </button> -->
         </div>
         <mat-divider></mat-divider>
       </div>
 
-      <div fxFlex="calc(10%-30px)" class="plr-30">
-        <app-account-autocomplete-chip (valueChanged)="accountsFilterChanged($event)"></app-account-autocomplete-chip>
+      <div class="plr-30">
+        <div fxLayout="row wrap">
+          <div fxFlex="50%">
+            <app-account-autocomplete-chip (valueChanged)="accountsFilterChanged($event)"></app-account-autocomplete-chip>
+          </div>
+        </div>
       </div>
-  
+
       <div fxFlex="calc(70%-30px)">
         <div>
           <div *ngIf="dataSource.loading$ | async">

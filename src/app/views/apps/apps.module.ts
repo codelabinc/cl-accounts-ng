@@ -18,12 +18,13 @@ import { AppRoleComponent } from './components/app-role/app-role.component';
 import { AppRoleFormComponent } from './components/app-role-form/app-role-form.component';
 import { AppPermissionMasterListComponent } from './components/app-permission-master-list/app-permission-master-list.component';
 import { PermissionFormComponent } from './components/permission-form/permission-form.component';
+import { AppAutocompleteChipComponent } from './components/app-autocomplete-chip/app-autocomplete-chip.component';
 
 
 @NgModule({
   declarations: [AppListComponent, AppConfigurationComponent, AppInfoComponent, AppWebHookComponent,
     AppWebHookFormComponent, AppPermissionComponent, AppPermissionFormComponent, AppRoleComponent,
-    AppRoleFormComponent, AppPermissionMasterListComponent, PermissionFormComponent],
+    AppRoleFormComponent, AppPermissionMasterListComponent, PermissionFormComponent, AppAutocompleteChipComponent],
   imports: [
     CommonModule,
     CommonPipesModule,
@@ -32,6 +33,7 @@ import { PermissionFormComponent } from './components/permission-form/permission
     NgxJsonViewerModule,
     CommonDirectivesModule,
     ControlErrorModule
-  ]
+  ],
+  exports: [AppAutocompleteChipComponent]
 })
 export class AppsModule { }

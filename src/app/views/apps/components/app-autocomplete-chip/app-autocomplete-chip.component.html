@@ -1,0 +1,23 @@
+<form [formGroup]='doForm'>
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch">
+        <mat-form-field fxFlex="100">
+            <mat-chip-list #chipList aria-label="Choose an App">
+                <mat-chip *ngFor="let app of apps; let idx=index;" [selectable]="selectable"
+                    [removable]="removable" (removed)="remove(app, idx)">
+                    {{app.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="Enter App Name..." #termInput [formControl]="doForm.get('term')"
+                    [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur">
+                    <mat-icon matSuffix>search</mat-icon>
+            </mat-chip-list>
+        </mat-form-field>
+
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let app of (filteredApps | async)" [value]="app">
+                <span>{{ app.name }}</span>
+            </mat-option>
+        </mat-autocomplete>
+    </div>
+</form>

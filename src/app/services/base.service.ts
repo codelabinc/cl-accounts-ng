@@ -4,7 +4,6 @@ import { environment } from 'environments/environment';
 import { Page } from 'app/model/page/page';
 ​
 export class BaseService<T> {
-​
   protected _serviceName;
 ​
   constructor(protected http: HttpClient, serviceName: string) {

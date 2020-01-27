@@ -6,7 +6,7 @@ import { AccountsService } from '../../services/accounts.service';
 import { AccountDataSource } from '../../datasource/account-data-source';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MasterRecordService } from '../../../../services/master-record.service';
-import { Country, State } from 'app/model/master-records';
+import { Country, State, SelectUi } from 'app/model/master-records';
 
 @Component({
   selector: 'app-accounts-list',
@@ -67,6 +67,12 @@ export class AccountsListComponent implements OnInit, AfterViewInit {
     filter.page = this.paginator.pageIndex;
     filter.size = this.paginator.pageSize;
     this.dataSource.loadAccounts(filter);
+  }
+
+  appsFilterChanged($event) {
+    const apps: SelectUi[] = $event;
+    const filter = {'app.code': apps.map(x=> x.value)};
+    this.onPage(filter);
   }
 
 }

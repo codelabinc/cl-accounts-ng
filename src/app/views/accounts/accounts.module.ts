@@ -13,6 +13,7 @@ import { AccountFormComponent } from './components/account-form/account-form.com
 import { MatSelectModule } from '@angular/material/select';
 import { AccountAutocompleteChipComponent } from './components/account-autocomplete-chip/account-autocomplete-chip.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { AppsModule } from '../apps/apps.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatChipsModule,
     MatAutocompleteModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    AppsModule
   ],
   exports: [AccountAutocompleteChipComponent]
 })
